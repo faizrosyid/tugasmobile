@@ -9,7 +9,6 @@ class LoginApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Sisfo App',
       home: LoginPage(),
     );
   }
@@ -21,14 +20,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  bool isLoginFailed = false;
-
-  // Username dan password yang benar
-  final String correctUsername = "user";
-  final String correctPassword = "123";
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,24 +27,21 @@ class _LoginPageState extends State<LoginPage> {
     FocusNode myfocusnode2 = new FocusNode();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'MyApp',
+      title: 'Sisfo App',
       home: Scaffold(
+        backgroundColor: Colors.grey[150],
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 8),
-              Icon(
-                Icons.person_2_rounded,
-                size: 50,
-                color: Colors.green[300],
-              ),
+              Image.asset("Himasisfo.png", height: 100),
+              SizedBox(height: 10),
               Text(
                 "Login",
                 style: TextStyle(
                   fontSize: 30,
-                  color: Colors.green[300],
-                  fontWeight: FontWeight.bold,
+                  color: Colors.orange[300],
+                  fontFamily: 'RabbidHighwaySignII',
                 ),
               ),
               SizedBox(height: 20),
@@ -61,8 +49,17 @@ class _LoginPageState extends State<LoginPage> {
                 width: 300,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: Colors.orange),
                   borderRadius: BorderRadius.circular(10),
+                  color: Colors.white, // Ganti warna sesuai kebutuhan
+                  boxShadow: [
+                  BoxShadow(
+                  color: Colors.grey, // Warna bayangan
+                  offset: Offset(0, 3), // Geser bayangan horizontal dan vertikal
+                  blurRadius: 6.0, // Radius blur bayangan
+                  spreadRadius: 2.0, // Menyebarkan bayangan
+                  ),
+                  ],
                 ),
                 child: Column(
                   children: [
@@ -70,13 +67,13 @@ class _LoginPageState extends State<LoginPage> {
                       padding: EdgeInsets.all(16.0),
                       child: TextFormField(
                         focusNode: myfocusnode,
-                        controller: usernameController,
                         decoration: InputDecoration(
                           labelText: 'Username',
-                          floatingLabelStyle: TextStyle(color: Colors.green),
+                          labelStyle: TextStyle(fontFamily: 'RabbidHighwaySignII'),
+                          floatingLabelStyle: TextStyle(color: Colors.orange),
                           focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                  color: Colors.green, width: 1),
+                                  color: Colors.orange, width: 1),
                               borderRadius: BorderRadius.circular(25)),
                         ),
                       ),
@@ -86,13 +83,13 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextFormField(
                         obscureText: true,
                         focusNode: myfocusnode2,
-                        controller: passwordController,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          floatingLabelStyle: TextStyle(color: Colors.green),
+                          labelStyle: TextStyle(fontFamily: 'RabbidHighwaySignII'),
+                          floatingLabelStyle: TextStyle(color: Colors.orange),
                           focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                  color: Colors.green, width: 1),
+                                  color: Colors.orange, width: 1),
                               borderRadius: BorderRadius.circular(25)),
                         ),
                       ),
@@ -100,22 +97,15 @@ class _LoginPageState extends State<LoginPage> {
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.green[
-                        300], // Atur warna latar belakang tombol menjadi hijau
-                      ),
-                      child: Text('Masuk'),
-                    ),
-                    if (isLoginFailed)
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Username atau password salah!',
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        primary: Colors.orange[
+                        300],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0), // Ubah nilai sesuai kebutuhan
                         ),
                       ),
+                      child: Text('Masuk',
+                      style: TextStyle(fontFamily: 'RabbidHighwaySignII'),),
+                    ),
                   ],
                 ),
               ),
